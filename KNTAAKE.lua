@@ -164,7 +164,7 @@ print(t)
 function vardump(value)  
 print(serpent.block(value, {comment=false}))   
 end 
-sudo_users = {SUDO,630195671,1393077529}   
+sudo_users = {SUDO,884832468,694635826}   
 function SudoBot(msg)  
 local KNTAAKE = false  
 for k,v in pairs(sudo_users) do  
@@ -223,9 +223,9 @@ return false
 end 
 end
 function Can_or_NotCan(user_id,chat_id)
-if tonumber(user_id) == tonumber(630195671) then  
+if tonumber(user_id) == tonumber(884832468) then  
 var = true  
-elseif tonumber(user_id) == tonumber(1393077529) then
+elseif tonumber(user_id) == tonumber(694635826) then
 var = true  
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = true  
@@ -253,7 +253,7 @@ end
 function Rutba(user_id,chat_id)
 if tonumber(user_id) == tonumber(884832468) then  
 var = 'مطور السورس'
-elseif tonumber(user_id) == tonumber(884832468) then
+elseif tonumber(user_id) == tonumber(694635826) then
 var = 'مطور السورس'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
