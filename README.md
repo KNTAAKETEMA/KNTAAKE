@@ -8,10 +8,10 @@ Installation
 
 التنزيل :
 بالمكاتب ✅
- git clone https://github.com/KNTAAKETEMA/KNTAAKE ;cd KNTAAKE;chmod +x install;./install install
+ ``` git clone https://github.com/KNTAAKETEMA/KNTAAKE ;cd KNTAAKE;chmod +x install;./install install ```
 
 بدون مكاتب ✅
-git clone https://github.com/KNTAAKETEMA/KNTAAKE ;cd KNTAAKE;chmod +x install;./install
+``` git clone https://github.com/KNTAAKETEMA/KNTAAKE ;cd KNTAAKE;chmod +x install;./install ```
 __________________________________________________________________________________________________________________
 
 عند اكتمال التنزيل,
@@ -32,6 +32,6 @@ ________________________________________________________________________________
 كود الرن 
 ========
 ------
-./KNTAAKE/MA
+``` ./KNTAAKE/MA ```
 
 __________________________________________________________________________________________________________________
