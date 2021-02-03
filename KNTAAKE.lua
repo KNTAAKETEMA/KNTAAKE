@@ -195,14 +195,6 @@ else
 return false  
 end  
 end
-function DevBot(msg) 
-local hash = database:sismember(bot_id.."MIKEY:Sudo:User", msg.sender_user_id_) 
-if hash or sudo_users(msg) or Sudo(msg) then    
-return true  
-else  
-return false  
-end  
-end
 function CoSu(msg)
 local hash = database:sismember(bot_id..'CoSu'..msg.chat_id_, msg.sender_user_id_) 
 if hash or SudoBot(msg) or Sudo(msg) or Bot(msg)  then   
@@ -270,8 +262,6 @@ elseif tonumber(user_id) == tonumber(bot_id) then
 var = true  
 elseif database:sismember(bot_id..'Sudo:User', user_id) then
 var = true  
-elseif database:sismember(bot_id.."MIKEY:Sudo:User", user_id) then
-var = true  
 elseif database:sismember(bot_id..'CoSu'..chat_id, user_id) then
 var = true
 elseif database:sismember(bot_id..'Basic:Constructor'..chat_id, user_id) then
@@ -300,8 +290,6 @@ elseif tonumber(user_id) == tonumber(694635826) then
 var = 'مطور السورس'
 elseif tonumber(user_id) == tonumber(SUDO) then
 var = 'المطور الاساسي'  
-elseif database:sismember(bot_id.."MIKEY:Sudo:T", user_id) then 
-var = "المطور الاساسي²"  
 elseif tonumber(user_id) == tonumber(bot_id) then  
 var = 'البوت'
 elseif database:sismember(bot_id..'Sudo:User', user_id) then
@@ -3173,90 +3161,6 @@ send(msg.chat_id_, msg.id_,' ⌔┆ تم قفل التكرار بالكتم')
 elseif text == 'فتح التكرار' and Mod(msg) then 
 database:hdel(bot_id.."flooding:settings:"..msg.chat_id_ ,"flood")  
 send(msg.chat_id_, msg.id_,' ⌔┆ تم فتح التكرار')
-end
----------------------------------------------
-if text == ("اضف مطور ثانوي") and tonumber(msg.reply_to_message_id_) ~= 0 and Sudo(msg) then
-function tdcli_function(extra, result, success)
-database:sadd(bot_id.."MIKEY:Sudo:T", result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply","⌔︙تم ترقيته مطور ثانوي في البوت")  
-end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
-return false 
-end
-if text and text:match("^اضف مطور ثانوي @(.*)$") and Sudo(msg) then
-local username = text:match("^اضف مطور ثانوي @(.*)$")
-function tdcli_function(extra, result, success)
-if result.id_ then
-if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-send(msg.chat_id_,msg.id_,"⌔︙عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
-return false 
-end      
-database:sadd(bot_id.."MIKEY:Sudo:T", result.id_)
-Reply_Status(msg,result.id_,"reply","⌔︙تم ترقيته مطور ثانوي في البوت")  
-else
-send(msg.chat_id_, msg.id_,"⌔︙لا يوجد حساب بهاذا المعرف")
-end
-end
-tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
-return false 
-end
-if text and text:match("^اضف مطور ثانوي (%d+)$") and Sudo(msg) then
-local userid = text:match("^اضف مطور ثانوي (%d+)$")
-database:sadd(bot_id.."MIKEY:Sudo:T", userid)
-Reply_Status(msg,userid,"reply","⌔︙تم ترقيته مطور ثانوي في البوت")  
-return false 
-end
-if text == ("حذف مطور ثانوي") and tonumber(msg.reply_to_message_id_) ~= 0 and Sudo(msg) then
-function tdcli_function(extra, result, success)
-database:srem(bot_id.."MIKEY:Sudo:T", result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply","⌔︙تم تنزيله من المطور ثانويين")  
-end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
-return false 
-end
-if text and text:match("^حذف مطور ثانوي @(.*)$") and Sudo(msg) then
-local username = text:match("^حذف مطور ثانوي @(.*)$")
-function tdcli_function(extra, result, success)
-if result.id_ then
-database:srem(bot_id.."MIKEY:Sudo:T", result.id_)
-Reply_Status(msg,result.id_,"reply","⌔︙تم تنزيله من المطور ثانويين")  
-else
-send(msg.chat_id_, msg.id_,"⌔︙لا يوجد حساب بهاذا المعرف")
-end
-end
-tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
-return false
-end  
-if text and text:match("^حذف مطور ثانوي (%d+)$") and Sudo(msg) then
-local userid = text:match("^حذف مطور ثانوي (%d+)$")
-database:srem(bot_id.."MIKEY:Sudo:T", userid)
-Reply_Status(msg,userid,"reply","⌔︙تم تنزيله من المطور ثانويين")  
-return false 
-end
-if text == ("الثانويين") and Sudo(msg) then
-local list = database:smembers(bot_id.."MIKEY:Sudo:T")
-t = "
-⌔︙قائمة مطورين الثانويين للبوت 
-┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-"
-for k,v in pairs(list) do
-local username = database:get(bot_id.."user:Name" .. v)
-if username then
-t = t..""..k.."- ([@"..username.."])
-"
-else
-t = t..""..k.."- (`"..v.."`)
-"
-end
-end
-if #list == 0 then
-t = "⌔︙لا يوجد مطورين ثانويين"
-end
-send(msg.chat_id_, msg.id_, t)
-end
-if text == ("مسح الثانويين") and Sudo(msg) then
-database:del(bot_id.."MIKEY:Sudo:T")
-send(msg.chat_id_, msg.id_, "\n⌔︙ تم مسح قائمة المطورين الثانويين  ")
 end
 --------------------------------------------------------------------------------------------------------------
 if text == 'تحديث' and SudoBot(msg) then    
@@ -10490,7 +10394,7 @@ local Name_Bot = (database:get(bot_id..'Name:Bot') or 'كنتاكي')
 if not database:get(bot_id.."Fun_Bots:"..msg.chat_id_) then
 if text ==  ""..Name_Bot..' شنو رئيك بهاذا' and tonumber(msg.reply_to_message_id_) > 0 then     
 function FunBot(extra, result, success) 
-local Fun = {'لوكي وزاحف من ساع زحفلي وحضرته ??','خوش ولد و ورده مال الله 💋🙄','يلعب ع البنات 🙄', 'ولد زايعته الكاع 😶🙊','صاك يخبل ومعضل ','محلو وشواربه جنها مكناسه 😂🤷🏼‍♀️','اموت عليه 🌝','هوه غير الحب مال اني 🤓❤️','مو خوش ولد صراحه ☹️','ادبسز وميحترم البنات  ', 'فد واحد قذر 🙄😒','ماطيقه كل ما اكمشه ريحته جنها بخاخ بف باف مال حشرات 😂🤷‍♀️','مو خوش ولد 🤓' } 
+local Fun = {'لوكي وزاحف من ساع زحفلي وحضرته 😒','خوش ولد و ورده مال الله 💋🙄','يلعب ع البنات 🙄', 'ولد زايعته الكاع 😶🙊','صاك يخبل ومعضل ','محلو وشواربه جنها مكناسه 😂🤷🏼‍♀️','اموت عليه 🌝','هوه غير الحب مال اني 🤓❤️','مو خوش ولد صراحه ☹️','ادبسز وميحترم البنات  ', 'فد واحد قذر 🙄😒','ماطيقه كل ما اكمشه ريحته جنها بخاخ بف باف مال حشرات 😂🤷‍♀️','مو خوش ولد 🤓' } 
 send(msg.chat_id_, result.id_,''..Fun[math.random(#Fun)]..'')   
 end   
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, FunBot, nil)
