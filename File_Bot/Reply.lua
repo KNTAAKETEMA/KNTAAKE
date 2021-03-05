@@ -2,7 +2,7 @@ local function Reply(msg)
 local text = msg.content_.text_
 if not database:get(bot_id..'Reply:Status'..msg.chat_id_) then
 if text == 'هلو' then
-TextReply = 'هلاوات يكلبي نورت/ي'
+TextReply = '؏ـمـࢪيہ يهلاا ، 🤍'
 send(msg.chat_id_, msg.id_,'['..TextReply..']')
 return false
 end
