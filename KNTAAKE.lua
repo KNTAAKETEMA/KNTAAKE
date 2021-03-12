@@ -4894,7 +4894,7 @@ end
 if text == ("رفع مطور ثانوي") and tonumber(msg.reply_to_message_id_) ~= 0 and SudoBot(msg) then
 function Function_KNTAAKE(extra, result, success)
 database:sadd(bot_id.."DEV:Sudo:T", result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply","⌁︙ تم ترقيته مطور ثانوي في البوت")  
+Reply_Status(msg,result.sender_user_id_,"reply","⌁︙تم ترقيته مطور ثانوي في البوت")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_KNTAAKE, nil)
 return false 
@@ -4904,13 +4904,13 @@ local username = text:match("^رفع مطور ثانوي @(.*)$")
 function Function_KNTAAKE(extra, result, success)
 if result.id_ then
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-send(msg.chat_id_,msg.id_,"⌁︙ عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
+send(msg.chat_id_,msg.id_,"⌁︙عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
 database:sadd(bot_id.."DEV:Sudo:T", result.id_)
-Reply_Status(msg,result.id_,"reply","⌁︙ تم ترقيته مطور ثانوي في البوت")  
+Reply_Status(msg,result.id_,"reply","⌁︙تم ترقيته مطور ثانوي في البوت")  
 else
-send(msg.chat_id_, msg.id_,"⌁︙ لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"⌁︙لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_KNTAAKE, nil)
@@ -4919,13 +4919,13 @@ end
 if text and text:match("^رفع مطور ثانوي (%d+)$") and SudoBot(msg) then
 local userid = text:match("^رفع مطور ثانوي (%d+)$")
 database:sadd(bot_id.."DEV:Sudo:T", userid)
-Reply_Status(msg,userid,"reply","⌁︙ تم ترقيته مطور ثانوي في البوت")  
+Reply_Status(msg,userid,"reply","⌁︙تم ترقيته مطور ثانوي في البوت")  
 return false 
 end
 if text == ("تنزيل مطور ثانوي") and tonumber(msg.reply_to_message_id_) ~= 0 and SudoBot(msg) then
 function Function_KNTAAKE(extra, result, success)
 database:srem(bot_id.."DEV:Sudo:T", result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply","⌁︙ تم تنزيله من المطور ثانويين")  
+Reply_Status(msg,result.sender_user_id_,"reply","⌁︙تم تنزيله من المطور ثانويين")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_KNTAAKE, nil)
 return false 
@@ -4935,9 +4935,9 @@ local username = text:match("^تنزيل مطور ثانوي @(.*)$")
 function Function_KNTAAKE(extra, result, success)
 if result.id_ then
 database:srem(bot_id.."DEV:Sudo:T", result.id_)
-Reply_Status(msg,result.id_,"reply","⌁︙ تم تنزيله من المطور ثانويين")  
+Reply_Status(msg,result.id_,"reply","⌁︙تم تنزيله من المطور ثانويين")  
 else
-send(msg.chat_id_, msg.id_,"⌁︙ لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"⌁︙لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_KNTAAKE, nil)
@@ -4946,7 +4946,7 @@ end
 if text and text:match("^تنزيل مطور ثانوي (%d+)$") and SudoBot(msg) then
 local userid = text:match("^تنزيل مطور ثانوي (%d+)$")
 database:srem(bot_id.."DEV:Sudo:T", userid)
-Reply_Status(msg,userid,"reply","⌁︙ تم تنزيله من المطور ثانويين")  
+Reply_Status(msg,userid,"reply","⌁︙تم تنزيله من المطور ثانويين")  
 return false 
 end
 if text == ("الثانويين") and SudoBot(msg) then
